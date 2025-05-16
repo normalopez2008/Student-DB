@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>Tests</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newTest() { showform('insert'); }
+    function updateTest(pid) { showform('update'); }
+    function deleteTest(pid) { showform ('delete'); }
+    function browseTest() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseTests()">
+<h1>Tests</h1>
+<nav>
+    [ <a href="index.html">Teachers</a> | <a href="students.html">Students</a> | <a href="enrollments.html">Enrollments</a>  | <a href="classes.html">Classes</a> | <a href="tests.html">Tests</a> | <a href="disciplinary_incidents.html">Disciplinary Incidents</a>  ]
+</nav>
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newTest()">New</a></th>
+    <th></th>
+    <th>Test_ID</th>
+    <th>Class_ID</th>
+    <th>Average Grade</th>
+    <th>Test_Date</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTest('this.TestID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTest('this.TestID')">Delete</a></td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">72.2</td>
+    <td style="text-align:right;">2023-11-13</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTest('this.TestID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTest('this.TestID')">Delete</a></td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">68.4</td>
+    <td style="text-align:right;">2023-12-04</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTest('this.TestID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTest('this.TestID')">Delete</a></td>
+    <td style="text-align:right;">3</td>
+    <td style="text-align:right;">4</td>
+    <td style="text-align:right;">77.3</td>
+    <td style="text-align:right;">2023-11-27</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTest('this.TestID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTest('this.TestID')">Delete</a></td>
+    <td style="text-align:right;">4</td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">74.8</td>
+    <td style="text-align:right;">2023-12-02</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addTest">
+        <legend><strong>Add Test</strong></legend>
+          <fieldset class="fields">
+            <label> Test ID </label> <input type="text" name="test_id">
+            <label> Class ID </label> <input type="text" name="class_id">
+            <label> Average Grade </label> <input type="text" name="average_grade">
+            <label> Test Date </label> <input type="text" name="test_date">
+      </fieldset>
+          <input class="btn" type="submit" id="addTest" value="Add Test">
+          <input class="btn" type="button" value="cancel" onClick="browseTest()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateTest">
+        <legend><strong>Update Test</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="Test_ID" id="updateTestID" value="1">
+          <label> Test ID </label> <input type="text" name="test_id">
+          <label> Class ID </label> <input type="text" name="class_id">
+          <label> Average Grade </label> <input type="text" name="average_grade">
+          <label> Test Date </label> <input type="text" name="test_date">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveTest" value="Save Update Test">
+          <input class="btn" type="button" value="cancel" onClick="browseTest()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteTest">
+      <legend><strong>Delete Test</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="TestID" id="deleteTestID" value="1">
+          <label><strong>ID:</strong></label> 1
+            <label> <strong>Class ID</strong> </label> 4
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteTest" value="Delete Test">
+          <input class="btn" type="button" value="cancel" onClick="browseTest()">
+  </form> 
+</div><!-- delete -->
+<script database-ui="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Enrollments</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newEnrollment() { showform('insert'); }
+    function updateEnrollment(pid) { showform('update'); }
+    function deleteEnrollment(pid) { showform ('delete'); }
+    function browseEnrollment() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseEnrollment()">
+<h1>Enrollments</h1>
+
+<nav>
+    [ <a href="index.html">Teachers</a> | <a href="students.html">Students</a> | <a href="enrollments.html">Enrollments</a>  | <a href="classes.html">Classes</a> | <a href="tests.html">Tests</a> | <a href="disciplinary_incidents.html">Disciplinary Incidents</a>  ]
+</nav>
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Enrollment_id</th>
+        <th>student_id</th>
+        <th>class_id</th>
+        <th>registration_date</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>1</td>
+        <td>3</td>
+        <td>1</td>
+        <td>2023-08-26</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>4</td>
+        <td>8</td>
+        <td>1</td>
+        <td>2023-08-26</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>6</td>
+        <td>8</td>
+        <td>1</td>
+        <td>2023-08-28</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>5</td>
+        <td>3</td>
+        <td>2</td>
+        <td>2023-07-19</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>4</td>
+        <td>2</td>
+        <td>3</td>
+        <td>2023-08-26</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>6</td>
+        <td>11</td>
+        <td>3</td>
+        <td>2023-08-26</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>7</td>
+        <td>13</td>
+        <td>3</td>
+        <td>2023-08-26</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateEnrollment('this.enrollmentID')">Edit</a></td>
+        <td><a href="#" onclick="deleteEnrollment('this.enrollmentID')">Delete</a></td>
+        <td>6</td>
+        <td>3</td>
+        <td>4</td>
+        <td>2023-08-28</td>
+      </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addEnrollmentt">
+        <legend><strong>Add Enrollment</strong></legend>
+          <fieldset class="fields">
+            <label> Enrollment ID</label> <input type="text" name="6">
+            <label> Student ID</label> <input type="text" name="2">
+            <label> Class ID</label> <input type="text" name="4">
+            <label> Registration Date </label> <input type="text" name="2023-08-28">
+        </fieldset>
+          <input class="btn" type="submit" id="addEnrollment" value="Add Enrollment">
+          <input class="btn" type="button" value="cancel" onClick="browseEnrollment()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateEnrollment">
+        <legend><strong>Update Enrollment</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="Enrollment_ID" id="updateEnrollmentID" value="1">
+          <label> Enrollment ID</label> <input type="text" name="6">
+          <label> Student ID</label> <input type="text" name="2">
+          <label> Class ID</label> <input type="text" name="4">
+          <label> Registration Date </label> <input type="text" name="2023-08-28">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveEnrollment" value="Save Update Enrollment">
+          <input class="btn" type="button" value="cancel" onClick="browseEnrollment()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteEnrollment">
+      <legend><strong>Delete Enrollment</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="EnrollmentID" id="deleteEnrollmentID" value="1">
+          <label><strong>ID:</strong></label> 6
+            <label> <strong>Class ID</strong> </label> 4
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteEnrollment" value="Delete Enrollment">
+          <input class="btn" type="button" value="cancel" onClick="browseEnrollment()">
+  </form> 
+</div><!-- delete -->
+<script database-ui="app.js"></script>
+</body>
+</html>

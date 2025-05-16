@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Disciplanary Incidents</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newIncident() { showform('insert'); }
+    function updateIncident(pid) { showform('update'); }
+    function deleteIncident(pid) { showform ('delete'); }
+    function browseIncident() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseIncidents()">
+<h1>Disciplanary Incidents</h1>
+<nav>
+    [ <a href="index.html">Teachers</a> | <a href="students.html">Students</a> | <a href="enrollments.html">Enrollments</a>  | <a href="classes.html">Classes</a> | <a href="tests.html">Tests</a> | <a href="disciplinary_incidents.html">Disciplinary Incidents</a>  ]
+</nav>
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newIncident()">New</a></th>
+    <th></th>
+    <th>Incident_ID</th>
+    <th>Student_ID</th>
+    <th>Class_ID</th>
+    <th>Incident_Description</th>
+    <th>Discipline_Type</th>
+    <th>Discipline_Length</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateIncident('this.IncidentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteIncident('this.IncidentID')">Delete</a></td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">Disrupting Class</td>
+    <td style="text-align:right;">Afterschool Detention</td>
+    <td style="text-align:right;">2</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateIncident('this.IncidentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteIncident('this.IncidentID')">Delete</a></td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">7</td>
+    <td style="text-align:right;">3</td>
+    <td style="text-align:right;">Tardy 5 Times</td>
+    <td style="text-align:right;">Lunch Detention</td>
+    <td style="text-align:right;">2</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateIncident('this.IncidentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteIncident('this.IncidentID')">Delete</a></td>
+    <td style="text-align:right;">3</td>
+    <td style="text-align:right;">5</td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">Passing Notes</td>
+    <td style="text-align:right;">Lunch Detention</td>
+    <td style="text-align:right;">1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addIncident">
+        <legend><strong>Add Incident</strong></legend>
+          <fieldset class="fields">
+            <label> Incident ID </label> <input type="text" name="incident_id">
+            <label> Student ID </label> <input type="text" name="student_id">
+            <label> Class ID </label> <input type="text" name="class_id">
+            <label> Incident Description </label> <input type="text" name="incident_description">
+            <label> Discipline Type </label> <input type="text" name="discipline_type">
+            <label> Discipline Length </label> <input type="text" name="discipline_length">
+      </fieldset>
+          <input class="btn" type="submit" id="addIncident" value="Add Incident">
+          <input class="btn" type="button" value="cancel" onClick="browseIncident()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateIncident">
+        <legend><strong>Update Incident</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="Incident_ID" id="updateIncidentID" value="1">
+                <label> Incident ID </label> <input type="text" name="incident_id">
+                <label> Student ID </label> <input type="text" name="student_id">
+                <label> Class ID </label> <input type="text" name="class_id">
+                <label> Incident Description </label> <input type="text" name="incident_description">
+                <label> Discipline Type </label> <input type="text" name="discipline_type">
+                <label> Discipline Length </label> <input type="text" name="discipline_length">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveIncident" value="Save Update Incident">
+          <input class="btn" type="button" value="cancel" onClick="browseIncident()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteIncident">
+      <legend><strong>Delete Incident</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="IncidentID" id="deleteIncidentID" value="1">
+          <label><strong>ID:</strong></label> 1
+            <label> <strong>Student ID </strong> </label> 5
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteIncident" value="Delete Incident">
+          <input class="btn" type="button" value="cancel" onClick="browseIncident()">
+  </form> 
+</div><!-- delete -->
+<script database-ui="app.js"></script>
+</body>
+</html>

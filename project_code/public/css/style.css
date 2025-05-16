@@ -1,0 +1,35 @@
+/* Apply font family to the body */
+body {
+    background-color: #e0d0a9;
+    font-family: 'lato', sans-serif;
+  }
+
+  /* Center the content in a container */
+  .container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Style the heading 2 */
+  h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  /* Style the small text within h2 */
+  h2 small {
+    font-size: 0.5em;
+  }
+  
+
+  
+  th {
+    background-color: #0d573c;
+    color: white;
+  }
+
+tr:nth-child(even) {background-color: #a4a4a4;}

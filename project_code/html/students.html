@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>Students</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newStudent() { showform('insert'); }
+    function updateStudent(pid) { showform('update'); }
+    function deleteStudent(pid) { showform ('delete'); }
+    function browseStudent() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseStudents()">
+<h1>Students</h1>
+
+<nav>
+[ <a href="index.html">Teachers</a> | <a href="students.html">Students</a> | <a href="enrollments.html">Enrollments</a>  | <a href="classes.html">Classes</a> | <a href="tests.html">Tests</a> | <a href="disciplinary_incidents.html">Disciplinary Incidents</a>  ]
+</nav>
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newStudent()">New</a></th>
+    <th></th>
+    <th>Student_ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>email</th>
+    <th>GPA</th>
+    <th>Grade</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.StudentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.StudentID')">Delete</a></td>
+    <td style="text-align:right;">1</td>
+    <td style="text-align:right;">Lucas</td>
+    <td style="text-align:right;">Bradley</td>
+    <td style="text-align:right;">bradleyl@aldine.com</td>
+    <td style="text-align:right;">3.6</td>
+    <td style="text-align:right;">11</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">2</td>
+    <td style="text-align:right;">Dexter</td>
+    <td style="text-align:right;">Ryan</td>
+    <td style="text-align:right;">ryand@aldine.com</td>
+    <td style="text-align:right;">3.0</td>
+    <td style="text-align:right;">10</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">3</td>
+    <td style="text-align:right;">Brooke</td>
+    <td style="text-align:right;">Bridges</td>
+    <td style="text-align:right;">bridgesb@aldine.com</td>
+    <td style="text-align:right;">3.8</td>
+    <td style="text-align:right;">11</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">4</td>
+    <td style="text-align:right;">Paige</td>
+    <td style="text-align:right;">Palmer</td>
+    <td style="text-align:right;">palmerp@aldine.com</td>
+    <td style="text-align:right;">3.1</td>
+    <td style="text-align:right;">12</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">5</td>
+    <td style="text-align:right;">Kai</td>
+    <td style="text-align:right;">Hunter</td>
+    <td style="text-align:right;">hunterk@aldine.com</td>
+    <td style="text-align:right;">2.6</td>
+    <td style="text-align:right;">9</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">6</td>
+    <td style="text-align:right;">Logan</td>
+    <td style="text-align:right;">Baldwin</td>
+    <td style="text-align:right;">baldwinl@aldine.com</td>
+    <td style="text-align:right;">2.8</td>
+    <td style="text-align:right;">12</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateStudent('this.studentID')">Edit</a></td>
+    <td><a href="#" onclick="deleteStudent('this.studentID')">Delete</a></td>
+    <td style="text-align:right;">7</td>
+    <td style="text-align:right;">Bailey</td>
+    <td style="text-align:right;">Hayes</td>
+    <td style="text-align:right;">hayesb@aldine.com</td>
+    <td style="text-align:right;">2.4</td>
+    <td style="text-align:right;">12</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addStudent">
+        <legend><strong>Add Student</strong></legend>
+          <fieldset class="fields">
+            <label> First name </label> <input type="text" name="first_name">
+            <label> Last name </label> <input type="text" name="last_name">
+            <label> Email </label> <input type="text" name="email">
+            <label> GPA </label> <select name="gpa">
+            <label> Grade </label> <input type="text" name="grade">
+            <option value="0">&nbsp;</option>
+                <option value="1" selected>Bailey</option>
+                <option value="2">Logan</option>
+                <option value="3">Kai</option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="addStudent" value="Add Student">
+          <input class="btn" type="button" value="cancel" onClick="browseStudent()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateStudent">
+        <legend><strong>Update Student</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="student_ID" id="updatestudentID" value="1">
+          <label> Student_ID: </label> 1
+            <label> first name </label> <input type="text" name="first_name" value="Bailey">
+            <label> last name </label> <input type="text" name="last_name" value="Hayes">
+            <label> email </label> <input type="text" name="last_name" value="hayesb@aldine.com">
+            <label> gpa </label> <input type="text" name="gpa" value="2.4">
+            <label> grade </label> <select name="12">
+            	<option value="0">&nbsp;</option>
+                <option value="1" selected>Bailey</option>
+                <option value="2">Logan</option>
+                <option value="3">Kai</option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveStudent" value="Save Update Student">
+          <input class="btn" type="button" value="cancel" onClick="browseStudent()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteStudent">
+      <legend><strong>Delete Student</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="studentID" id="deletestudentID" value="1">
+          <label><strong>ID:</strong></label> 1
+            <label> <strong>Name</strong> </label> Bailey Hayes
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteStudent" value="Delete Student">
+          <input class="btn" type="button" value="cancel" onClick="browseStudent()">
+  </form> 
+</div><!-- delete -->
+<script database-ui="app.js"></script>
+</body>
+</html>

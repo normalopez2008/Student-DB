@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>Teachers</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newTeacher() { showform('insert'); }
+    function updateTeacher(pid) { showform('update'); }
+    function deleteTeacher(pid) { showform ('delete'); }
+    function browseTeacher() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browseTeachers()">
+<h1>Teachers</h1>
+<nav>
+    [ <a href="index.html">Teachers</a> | <a href="students.html">Students</a> | <a href="enrollments.html">Enrollments</a>  | <a href="classes.html">Classes</a> | <a href="tests.html">Tests</a> | <a href="disciplinary_incidents.html">Disciplinary Incidents</a>  ]
+</nav>
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th></th>
+    <th></th>
+    <th>teacher_id</th>
+    <th>first_name</th>
+    <th>last_name</th>
+    <th>email</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTeacher('this.teacherID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTeacher('this.teacherID')">Delete</a></td>
+    <td>1</td>
+    <td>Hank</td>
+    <td>Kerr</td>
+    <td>kerrh@aldine.com</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTeacher('this.teacherID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTeacher('this.teacherID')">Delete</a></td>
+    <td>2</td>
+    <td>Billy</td>
+    <td>Reid</td>
+    <td>reidb@aldine.com</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updateTeacher('this.teacherID')">Edit</a></td>
+    <td><a href="#" onclick="deleteTeacher('this.teacherID')">Delete</a></td>
+    <td>3</td>
+    <td>Simon</td>
+    <td>Clark</td>
+    <td>clarks@aldine.com</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addTeacher">
+        <legend><strong>Add Teacher</strong></legend>
+          <fieldset class="fields">
+            <label> Teacher ID </label> <input type="text" name="teacher_id">
+            <label> First name </label> <input type="text" name="first_name">
+            <label> Last name </label> <input type="text" name="last_name">
+            <label> Email </label> <input type="text" name="email">
+            <option value="0">&nbsp;</option>
+                <option value="1" selected>Simon</option>
+                <option value="2">Billy</option>
+                <option value="3">Hank</option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="addTeacher" value="Add Teacher">
+          <input class="btn" type="button" value="cancel" onClick="browseTeacher()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdateTeacher">
+        <legend><strong>Update Teacher</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="teacher_ID" id="updateteacherID" value="2">
+          <label> Teacher_ID: </label> 1
+            <label> first name </label> <input type="text" name="teacher_id" value="Simon">
+            <label> last name </label> <input type="text" name="first_name" value="Clark">
+            <label> email </label> <input type="text" name="last_name" value="clarks@aldine.com">
+            	<option value="0">&nbsp;</option>
+                <option value="1" selected>Simon</option>
+                <option value="2">Billy</option>
+                <option value="3">Hank</option>
+                </select>
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSaveTeacher" value="Save Update Teacher">
+          <input class="btn" type="button" value="cancel" onClick="browseTeacher()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deleteTeacher">
+      <legend><strong>Delete Teacher</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="teacherID" id="deleteteachertID" value="1">
+          <label><strong>ID:</strong></label> 1
+            <label> <strong>Name</strong> </label> Simon Clark
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeleteTeacher" value="Delete Teacher">
+          <input class="btn" type="button" value="cancel" onClick="browseTeacher()">
+  </form> 
+</div><!-- delete -->
+<script database-ui="app.js"></script>
+</body>
+</html>
