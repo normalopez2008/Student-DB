@@ -10,13 +10,13 @@ help keep track of the number of students in each class and the teachers assigne
 
 **Students:**
 An entity that stores data associated with a single student at Aldine High School, the entity contains information about the student including id number, name, email, gpa and year they are in. A student can have multiple classes, tests, and disciplinary incidents associated with them.
-● student_id: int, not NULL, primary key
-● first_name: varchar, not NULL
-● last_name: varchar, not NULL
-● full_name: (first_name, last_name), unique
-● email: varchar, not NULL, unique
-● gpa: float, NULL
-● grade: int, not NULL
+- student_id: int, not NULL, primary key
+- first_name: varchar, not NULL
+- last_name: varchar, not NULL
+- full_name: (first_name, last_name), unique
+- email: varchar, not NULL, unique
+- gpa: float, NULL
+- grade: int, not NULL
 
 Relationship: a 1:M relationship with enrollments
 Relationship: a M:N relationship with classes
@@ -25,21 +25,21 @@ Relationship: a 1:M relationship with disciplinary incidents
 
 **Teachers:**
 An entity that stores data associated with a single teacher at Aldine High School, the entity contains information about the teacher’s name, id number and email. A teacher can teach multiple classes.
-● teacher_id: int, not NULL, primary key
-● first_name: varchar, not NULL
-● last_name: varchar, not NULL
-● full_name: (first_name, last_name), unique
-● email: varchar, not NULL, unique
+- teacher_id: int, not NULL, primary key
+- first_name: varchar, not NULL
+- last_name: varchar, not NULL
+- full_name: (first_name, last_name), unique
+- email: varchar, not NULL, unique
 
 Relationship: a 1:M relationship with classes
 
 **Classes:**
 An entity that stores data associated with an individual class at Aldine High School, the entity contains the class id, the id of the teacher that teaches the class, the name and subject of the class, and the start time of the class, the start time of the class is saved in military time (i.e. 8:30AM = 0830). A class has multiple students, it can have multiple tests and disciplinary incidents, but will only have one teacher.
-● class_id: int, not NULL, primary key
-● teacher_id: int, not NULL, foreign key
-● class_subject: varchar, not NULL
-● class_name: varchar, not NULL UNIQUE
-● class_start_time: int, not NULL
+- class_id: int, not NULL, primary key
+- teacher_id: int, not NULL, foreign key
+- class_subject: varchar, not NULL
+- class_name: varchar, not NULL UNIQUE
+- class_start_time: int, not NULL
 
 Relationship: a 1:M relationship with enrollments
 Relationship: a M:N relationship with students
@@ -49,9 +49,9 @@ Relationship a 1:M relationship with disciplinary incident
 
 **Enrollments:**
 An entity that stores data associated with individual enrollments at Aldine High School. The entity contains the id of the student enrolling, the id of the class they are enrolling in, as well as the date they enrolled. Each enrollment only has one student and one class associated with it.
-● student_id: int, not NULL, foreign key, co-primary key
-● class_id: int, not NULL, foreign key, co-primary key
-● registration_date: date, not NULL
+- student_id: int, not NULL, foreign key, co-primary key
+- class_id: int, not NULL, foreign key, co-primary key
+- registration_date: date, not NULL
 
 Relationship: a 1:M relationship with students
 Relationship: a 1:M relationship with classes
@@ -60,22 +60,22 @@ Relationship: a 1:M relationship with classes
 An entity that stores data associated with a test at Aldine High School, the entity contains the test id, the
 id of the class the tests is associated with and the average grade on the test. A test belongs to a singular
 class and is taken by every student in the class.
-● test_id: int, not NULL, primary key
-● class_id: int, not NULL, foreign key
-● average_grade: int, not NULL
-● test_date: date, not NULL
+- test_id: int, not NULL, primary key
+- class_id: int, not NULL, foreign key
+- average_grade: int, not NULL
+- test_date: date, not NULL
 
 Relationship: a 1:M relationship with classes
 Relationship: a M:N relationship with students
 
 **Disciplinary_Incidents:**
 An entity that stores data associated with an individual disciplinary incident at Aldine High School, the entity contains the incident id, the id of the student who had the disciplinary incident, class the incident occurred in, as well as the type of incident and the length of discipline. Each disciplinary incident only has one class and one student associated with it.
-● incident_id : int, not NULL, primary key
-● student_id: int, not NULL, foreign key
-● class_id: int, not NULL, foreign key
-● incident_description: varchar, not NULL
-● discipline_type: varchar, not NULL
-● discipline_length: int, not NULL
+- incident_id : int, not NULL, primary key
+- student_id: int, not NULL, foreign key
+- class_id: int, not NULL, foreign key
+- incident_description: varchar, not NULL
+- discipline_type: varchar, not NULL
+- discipline_length: int, not NULL
 
 Relationship: a 1:M relationship with students
 Relationship: a 1:M relationship with classes
@@ -154,34 +154,34 @@ npm run dev
 
 **Classes:**
 
-![App Screenshot](Classes.png)
+<img width="833" alt="Classes" src="https://github.com/user-attachments/assets/b188fd1c-0cf2-4e37-b517-84e172a93f81" />
 
 **Disciplinary_Incidents:**
 
-![App Screenshot](discipline.png)
+<img width="833" alt="discipline" src="https://github.com/user-attachments/assets/2a14a9d4-663c-4bc7-a6d6-644057c9bf4b" />
 
 **Enrollments:**
 
-![App Screenshot](enrollments.png)
+<img width="691" alt="enrollments" src="https://github.com/user-attachments/assets/9b31ac2a-2796-41a0-8e4a-d745462057e7" />
 
 **Students:**
 
-![App Screenshot](students.png)
+<img width="828" alt="students" src="https://github.com/user-attachments/assets/9c75931b-d9fd-4f47-b6dc-4612789bfd89" />
 
 **Teachers:**
 
-![App Screenshot](teachers.png)
+<img width="659" alt="teachers" src="https://github.com/user-attachments/assets/738e1460-6045-4e0a-ab49-886e59ade438" />
 
 **Tests:**
 
-![App Screenshot](tests.png)
+<img width="590" alt="tests" src="https://github.com/user-attachments/assets/ac009276-3d72-4dd7-9d38-5ea5a63f9d46" />
 
 ---
 
 ## 👥 Authors
 
-- Jace Bolante
 - Norma Lopez
+- Jace Bolante
 - Tanvi Patel
 
 ---
